@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      background-color: #ffccff;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #startBtn {
+      margin-top: 100px;
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #gallery, #message {
+      display: none;
+    }
+
+    .photo {
+      width: 220px;
+      height: 400px;
+      margin: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease-in;
+    }
+
+    #message {
+      font-size: 40px;
+      margin-top: 30px;
+      color: #ff1493;
+      animation: fadeIn 3s ease-in;
+    }
+
+    #quote {
+      font-size: 24px;
+      color: #990099;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <button id="startBtn">Start Birthday Surprise!</button>
+
+  <audio id="bgMusic" src="music/bgm.mp3"></audio>
+
+  <div id="gallery">
+    <img class="photo" src="img1.jpg" alt="Memory 1">
+  </div>
+
+  <div id="message">
+    Happy Birthday!
+    <div id="quote">"Good friends are like stars. You don’t always see them, but you know they’re always there. Happy Birthday! Neha</div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const music = document.getElementById('bgMusic');
+    const gallery = document.getElementById('gallery');
+    const message = document.getElementById('message');
+
+    startBtn.addEventListener('click', () => {
+      music.play().then(() => {
+        startBtn.style.display = 'none';
+        setTimeout(() => {
+          gallery.style.display = 'block';
+        }, 1000);
+        setTimeout(() => {
+          message.style.display = 'block';
+        }, 3000);
+      }).catch(() => {
+        alert("Please allow audio to play the birthday surprise!");
+      });
+    });
+  </script>
+</body>
+</html>
